@@ -1,6 +1,6 @@
 # PermissionManager
 
-![](https://jitpack.io/v/TheBrownArrow/PermissionManager.svg)](https://jitpack.io/#TheBrownArrow/PermissionManager)
+![](https://jitpack.io/v/TheBrownArrow/PermissionManager.svg)]
 
 
 ```java
