@@ -1,6 +1,6 @@
 # PermissionManager
 
-[![](https://jitpack.io/v/TheBrownArrow/AndroidUtils.svg)](https://jitpack.io/#TheBrownArrow/AndroidUtils)
+[![](https://jitpack.io/v/TheBrownArrow/PermissionManager.svg)](https://jitpack.io/#TheBrownArrow/PermissionManager)
 
 
 # Installation
