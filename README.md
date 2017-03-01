@@ -1,10 +1,6 @@
 # PermissionManager
 
-[![](https://jitpack.io/v/TheBrownArrow/PermissionManager.svg)](https://jitpack.io/v/TheBrownArrow/PermissionManager.svg)
-
-
-<img src="https://github.com/thebrownarrow/PermissionManager/blob/master/screenshot.png" alt text="Screenshot" width="240" height="427" />
-
+[![](https://jitpack.io/v/TheBrownArrow/AndroidUtils.svg)](https://jitpack.io/#TheBrownArrow/AndroidUtils)
 
 
 # Installation
@@ -24,7 +20,7 @@ allprojects {
 **Step 2.** Add the dependency
 ```java
 dependencies {
-	        compile 'com.github.TheBrownArrow:PermissionManager:1.0.0'
+	        compile 'com.github.TheBrownArrow:AndroidUtils:1.0.0'
 	}
 ```
 
