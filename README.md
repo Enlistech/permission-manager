@@ -20,7 +20,7 @@ allprojects {
 **Step 2.** Add the dependency
 ```java
 dependencies {
-	        compile 'com.github.TheBrownArrow:AndroidUtils:1.0.0'
+	        compile 'com.github.TheBrownArrow:PermissionManager:1.0.0'
 	}
 ```
 
