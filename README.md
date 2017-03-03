@@ -2,6 +2,14 @@
 
 [![](https://jitpack.io/v/TheBrownArrow/PermissionManager.svg)](https://jitpack.io/#TheBrownArrow/PermissionManager)
 
+Permission Manager is easily manage Android Marshmallow and nougat runtime permissions.
+
+This library is backwards compatible. In pre-Marshmallow devices permissions are returned as given. This is done using the Android Support library `AppCompatActivity` and support `Fragment` methods for permissions.
+
+### Requirements
+
+The library requires Android API Level 9+.
+
 
 # Installation
 
@@ -23,6 +31,135 @@ dependencies {
 	        compile 'com.github.TheBrownArrow:PermissionManager:1.0.0'
 	}
 ```
+
+# How to Use this library
+
+### Inside Activity
+
+**Step 1.** Extends `ActivityManagePermission` in your Activity.
+```java
+public class MainActivity extends ActivityManagePermission {
+
+}
+```
+**Step 2.** Example usage to ask camera permission.
+```java
+askCompactPermission(PermissionUtils.Manifest_CAMERA, new PermissionResult() {
+                    @Override
+                    public void permissionGranted() {
+                        //permission granted
+                        //replace with your action
+                    }
+
+                    @Override
+                    public void permissionDenied() {
+                        //permission denied
+                        //replace with your action
+                    }
+                       @Override
+                    public void permissionForeverDenied() {
+                     // user has check never ask again
+                     // you need to open setting manually
+                     openSettingsApp(MainActivity.this);
+                    }
+                });
+```
+
+### Inside Fragment
+
+**Step 1.** Extends `FragmentManagePermission` in your Fragment.
+```java
+public class MainFragment extends FragmentManagePermission {
+
+}
+```
+**Step 2.** Example usage to ask camera permission.
+```java
+askCompactPermission(PermissionUtils.Manifest_CAMERA, new PermissionResult() {
+                    @Override
+                    public void permissionGranted() {
+                        //permission granted
+                        //replace with your action
+                    }
+
+                    @Override
+                    public void permissionDenied() {
+                        //permission denied
+                        //replace with your action
+                    }
+                       @Override
+                    public void permissionForeverDenied() {
+                     // user has check never ask again
+                     // you need to open setting manually
+                     openSettingsApp(MainActivity.this);
+                    }
+                });
+```
+
+
+# Advance Usage
+
+### Check whether a permission has been granted.
+```java
+boolean isPermissionGranted = isPermissionGranted(MainActivity.this, PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE);
+```
+### Check whether a multiple permission has been granted.
+```java
+boolean isPermissionGranted = isPermissionsGranted(MainActivity.this, new String[] {PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE, PermissionUtils.Manifest_CAMERA});
+```
+
+### Open Application Setting
+Need to class extend `FragmentManagePermission` for `Fragment` and `ActivityManagePermission` for `Activity`
+```java
+openSettingsApp(MainActivity.this);
+```
+
+## Multiple Permission
+```java
+askCompactPermissions(new String[]{PermissionUtils.Manifest_CAMERA, PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE}, new PermissionResult() {
+            @Override
+            public void permissionGranted() {
+                //permission granted
+                //replace with your action
+            }
+
+            @Override
+            public void permissionDenied() {
+                //permission denied
+                //replace with your action
+            }
+             @Override
+                    public void permissionForeverDenied() {
+                     // user has check 'never ask again'
+                     // you need to open setting manually
+                     openSettingsApp(MainActivity.this);
+                    }
+        });
+```
+
+## Group Permissions
+```java
+askCompactPermission(PermissionUtils.Manifest_GROUP_STORAGE, PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE}, new PermissionResult() {
+            @Override
+            public void permissionGranted() {
+                //permission granted
+                //replace with your action
+            }
+
+            @Override
+            public void permissionDenied() {
+                //permission denied
+                //replace with your action
+            }
+             @Override
+                    public void permissionForeverDenied() {
+                     // user has check 'never ask again'
+                     // you need to open setting manually
+                     openSettingsApp(MainActivity.this);
+                    }
+        });
+```
+**send me your apps!** <a href="mailto:storedeveloper17@gmail.com">storedeveloper17@gmail.com</a>
 
 
 # License
