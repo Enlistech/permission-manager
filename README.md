@@ -159,7 +159,10 @@ askCompactPermission(PermissionUtils.Manifest_GROUP_STORAGE, PermissionUtils.Man
                     }
         });
 ```
-**send me your apps!** <a href="mailto:storedeveloper17@gmail.com">storedeveloper17@gmail.com</a>
+
+
+# Let us know
+We’d be really happy if you sent us links to your projects where you use our component. Just send an email to <a href="mailto:storedeveloper17@gmail.com">storedeveloper17@gmail.com</a> And do let us know if you have any questions or suggestion regarding the Permission Manager.
 
 
 # License
