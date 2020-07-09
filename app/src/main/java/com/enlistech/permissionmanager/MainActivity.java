@@ -1,12 +1,12 @@
-package com.thebrownarrow.permissionmanager;
+package com.enlistech.permissionmanager;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.thebrownarrow.permissionhelper.ActivityManagePermission;
-import com.thebrownarrow.permissionhelper.PermissionResult;
-import com.thebrownarrow.permissionhelper.PermissionUtils;
+import com.enlistech.permissionhelper.ActivityManagePermission;
+import com.enlistech.permissionhelper.PermissionResult;
+import com.enlistech.permissionhelper.PermissionUtils;
 
 public class MainActivity extends ActivityManagePermission {
 

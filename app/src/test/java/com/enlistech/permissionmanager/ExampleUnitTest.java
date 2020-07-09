@@ -1,4 +1,4 @@
-package com.thebrownarrow.permissionhelper;
+package com.enlistech.permissionmanager;
 
 import org.junit.Test;
 

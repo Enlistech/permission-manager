@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2016 The Brown Arrow
+ * Copyright (c) 2016 Enlistech
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.thebrownarrow.permissionhelper;
+package com.enlistech.permissionhelper;
 
 import android.content.Context;
 import android.content.Intent;
@@ -32,24 +32,23 @@ import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.Fragment;
 import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 @SuppressWarnings({"MissingPermission"})
-public class FragmentManagePermission extends Fragment {
+public class ActivityManagePermission extends AppCompatActivity {
 
     private final int KEY_PERMISSION = 999;
     private PermissionResult permissionResult;
     private String permissionsAsk[];
 
     @Override
-    public void onCreate(Bundle arg0) {
-        super.onCreate(arg0);
-        setRetainInstance(false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     /**
@@ -58,7 +57,7 @@ public class FragmentManagePermission extends Fragment {
      * @return boolean      true/false
      */
     public boolean isPermissionGranted(Context context, String permission) {
-        return (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) || (ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED);
+        return ((Build.VERSION.SDK_INT < Build.VERSION_CODES.M) || (ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED));
     }
 
     /**
@@ -72,7 +71,7 @@ public class FragmentManagePermission extends Fragment {
 
         boolean granted = true;
         for (String permission : permissions) {
-            if (!(ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED))
+            if (!(ActivityCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED))
                 granted = false;
         }
         return granted;
@@ -83,7 +82,7 @@ public class FragmentManagePermission extends Fragment {
         ArrayList<String> permissionsNotGranted = new ArrayList<>();
 
         for (int i = 0; i < permissionAsk.length; i++) {
-            if (!isPermissionGranted(getActivity(), permissionAsk[i])) {
+            if (!isPermissionGranted(ActivityManagePermission.this, permissionAsk[i])) {
                 permissionsNotGranted.add(permissionAsk[i]);
             }
         }
@@ -91,11 +90,10 @@ public class FragmentManagePermission extends Fragment {
         if (permissionsNotGranted.isEmpty()) {
             if (permissionResult != null)
                 permissionResult.permissionGranted();
-
         } else {
             arrayPermissionNotGranted = new String[permissionsNotGranted.size()];
             arrayPermissionNotGranted = permissionsNotGranted.toArray(arrayPermissionNotGranted);
-            requestPermissions(arrayPermissionNotGranted, KEY_PERMISSION);
+            ActivityCompat.requestPermissions(ActivityManagePermission.this, arrayPermissionNotGranted, KEY_PERMISSION);
         }
     }
 
@@ -108,9 +106,11 @@ public class FragmentManagePermission extends Fragment {
 
         List<String> permissionDenied = new LinkedList<>();
         boolean granted = true;
-        for (int grantResult : grantResults) {
-            if (!(grantResults.length > 0 && grantResult == PackageManager.PERMISSION_GRANTED))
+        for (int i = 0; i < grantResults.length; i++) {
+            if (!(grantResults[i] == PackageManager.PERMISSION_GRANTED)) {
                 granted = false;
+                permissionDenied.add(permissions[i]);
+            }
         }
 
         if (permissionResult != null) {
@@ -118,7 +118,7 @@ public class FragmentManagePermission extends Fragment {
                 permissionResult.permissionGranted();
             } else {
                 for (String s : permissionDenied) {
-                    if (!shouldShowRequestPermissionRationale(s)) {
+                    if (!ActivityCompat.shouldShowRequestPermissionRationale(this, s)) {
                         permissionResult.permissionForeverDenied();
                         return;
                     }
@@ -139,7 +139,7 @@ public class FragmentManagePermission extends Fragment {
     }
 
     /**
-     * @param permissions       String[] permissions to ask
+     * @param permissions       String[] permissions ask
      * @param permissionResult  callback PermissionResult
      */
     public void askCompactPermissions(String permissions[], PermissionResult permissionResult) {
@@ -147,7 +147,6 @@ public class FragmentManagePermission extends Fragment {
         this.permissionResult = permissionResult;
         internalRequestPermission(permissionsAsk);
     }
-
 
     public void openSettingsApp(Context context) {
         Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);

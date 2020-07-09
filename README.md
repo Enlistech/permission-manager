@@ -19,17 +19,17 @@ The library requires Android API Level 9+.
 Add it in your root build.gradle at the end of repositories:
 ```java
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+    repositories {
+    ...
+        maven { url 'https://jitpack.io' }
+    }
+}
 ```
 **Step 2.** Add the dependency
 ```java
 dependencies {
-	        compile 'com.github.TheBrownArrow:PermissionManager:1.0.0'
-	}
+    implementation 'com.github.Enlistech:PermissionManager:1.0.0'
+}
 ```
 
 # How to Use this library
@@ -45,24 +45,24 @@ public class MainActivity extends ActivityManagePermission {
 **Step 2.** Example usage to ask camera permission.
 ```java
 askCompactPermission(PermissionUtils.Manifest_CAMERA, new PermissionResult() {
-                    @Override
-                    public void permissionGranted() {
-                        //permission granted
-                        //replace with your action
-                    }
+    @Override
+    public void permissionGranted() {
+        //permission granted
+        //replace with your action
+    }
 
-                    @Override
-                    public void permissionDenied() {
-                        //permission denied
-                        //replace with your action
-                    }
-                       @Override
-                    public void permissionForeverDenied() {
-                     // user has check never ask again
-                     // you need to open setting manually
-                     openSettingsApp(MainActivity.this);
-                    }
-                });
+    @Override
+    public void permissionDenied() {
+        //permission denied
+        //replace with your action
+    }
+       @Override
+    public void permissionForeverDenied() {
+     // user has check never ask again
+     // you need to open setting manually
+     openSettingsApp(MainActivity.this);
+    }
+});
 ```
 
 ### Inside Fragment
@@ -76,24 +76,24 @@ public class MainFragment extends FragmentManagePermission {
 **Step 2.** Example usage to ask camera permission.
 ```java
 askCompactPermission(PermissionUtils.Manifest_CAMERA, new PermissionResult() {
-                    @Override
-                    public void permissionGranted() {
-                        //permission granted
-                        //replace with your action
-                    }
+    @Override
+    public void permissionGranted() {
+        //permission granted
+        //replace with your action
+    }
 
-                    @Override
-                    public void permissionDenied() {
-                        //permission denied
-                        //replace with your action
-                    }
-                       @Override
-                    public void permissionForeverDenied() {
-                     // user has check never ask again
-                     // you need to open setting manually
-                     openSettingsApp(MainActivity.this);
-                    }
-                });
+    @Override
+    public void permissionDenied() {
+        //permission denied
+        //replace with your action
+    }
+       @Override
+    public void permissionForeverDenied() {
+     // user has check never ask again
+     // you need to open setting manually
+     openSettingsApp(MainActivity.this);
+    }
+});
 ```
 
 
@@ -117,58 +117,58 @@ openSettingsApp(MainActivity.this);
 ## Multiple Permission
 ```java
 askCompactPermissions(new String[]{PermissionUtils.Manifest_CAMERA, PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE}, new PermissionResult() {
-            @Override
-            public void permissionGranted() {
-                //permission granted
-                //replace with your action
-            }
+    @Override
+    public void permissionGranted() {
+        //permission granted
+        //replace with your action
+    }
 
-            @Override
-            public void permissionDenied() {
-                //permission denied
-                //replace with your action
-            }
-             @Override
-                    public void permissionForeverDenied() {
-                     // user has check 'never ask again'
-                     // you need to open setting manually
-                     openSettingsApp(MainActivity.this);
-                    }
-        });
+    @Override
+    public void permissionDenied() {
+        //permission denied
+        //replace with your action
+    }
+     @Override
+    public void permissionForeverDenied() {
+     // user has check 'never ask again'
+     // you need to open setting manually
+     openSettingsApp(MainActivity.this);
+    }
+});
 ```
 
 ## Group Permissions
 ```java
 askCompactPermission(PermissionUtils.Manifest_GROUP_STORAGE, PermissionUtils.Manifest_WRITE_EXTERNAL_STORAGE}, new PermissionResult() {
-            @Override
-            public void permissionGranted() {
-                //permission granted
-                //replace with your action
-            }
+    @Override
+    public void permissionGranted() {
+        //permission granted
+        //replace with your action
+    }
 
-            @Override
-            public void permissionDenied() {
-                //permission denied
-                //replace with your action
-            }
-             @Override
-                    public void permissionForeverDenied() {
-                     // user has check 'never ask again'
-                     // you need to open setting manually
-                     openSettingsApp(MainActivity.this);
-                    }
-        });
+    @Override
+    public void permissionDenied() {
+        //permission denied
+        //replace with your action
+    }
+     @Override
+    public void permissionForeverDenied() {
+     // user has check 'never ask again'
+     // you need to open setting manually
+     openSettingsApp(MainActivity.this);
+    }
+});
 ```
 
 
 # Let us know
-We’d be really happy if you sent us links to your projects where you use our component. Just send an email to <a href="mailto:thebrownarrow@gmail.com">thebrownarrow@gmail.com</a> And do let us know if you have any questions or suggestion regarding the Permission Manager.
+We’d be really happy if you sent us links to your projects where you use our component. Just send an email to <a href="mailto:info@enlistech.com">info@enlistech.com</a> And do let us know if you have any questions or suggestion regarding the Permission Manager.
 
 
 # License
 
 ```
-Copyright © 2017 by The Brown Arrow
+Copyright © 2017 by Enlistech
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

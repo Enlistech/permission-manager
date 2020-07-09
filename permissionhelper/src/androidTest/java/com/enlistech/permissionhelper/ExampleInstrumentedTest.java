@@ -1,4 +1,4 @@
-package com.thebrownarrow.permissionhelper;
+package com.enlistech.permissionhelper;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;

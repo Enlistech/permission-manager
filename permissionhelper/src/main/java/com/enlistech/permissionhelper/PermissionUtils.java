@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2016 The Brown Arrow
+ * Copyright (c) 2016 Enlistech
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.thebrownarrow.permissionhelper;
+package com.enlistech.permissionhelper;
 
 import android.Manifest;
 
