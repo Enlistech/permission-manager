@@ -21,18 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.enlistech.permissionhelper
 
-package com.enlistech.permissionhelper;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
-public @interface AskPermission {
-
-    String permission() default "";
-
+interface PermissionResult {
+    fun permissionGranted()
+    fun permissionDenied()
+    fun permissionForeverDenied()
 }

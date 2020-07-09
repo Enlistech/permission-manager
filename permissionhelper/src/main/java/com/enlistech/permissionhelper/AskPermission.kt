@@ -21,15 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.enlistech.permissionhelper
 
-package com.enlistech.permissionhelper;
-
-public interface PermissionResult {
-
-    void permissionGranted();
-
-    void permissionDenied();
-
-    void permissionForeverDenied();
-
-}
+@kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
+@Target(AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)
+annotation class AskPermission(val permission: String = "")
